@@ -2,7 +2,13 @@ pipeline {
     agent any
 
     stages {
-    
+
+        stage('Verify Workspace') {
+            steps {
+                bat 'dir'
+                bat 'if exist package.json (echo package.json FOUND) else (echo package.json NOT FOUND)'
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
