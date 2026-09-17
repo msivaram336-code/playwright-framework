@@ -11,6 +11,14 @@ pipeline {
             }
         }
 
+        stage('Install Playwright Browsers') {
+            steps {
+                dir('playwright-framework') {
+                    bat 'npx playwright install'
+                }
+            }
+        }
+
         stage('Run Playwright Tests') {
             steps {
                 dir('playwright-framework') {
