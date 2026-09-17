@@ -3,22 +3,19 @@ pipeline {
 
     stages {
 
-        stage('Verify Workspace') {
-            steps {
-                bat 'dir'
-                bat 'if exist package.json (echo package.json FOUND) else (echo package.json NOT FOUND)'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('playwright-framework') {
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                bat 'npx playwright test'
+                dir('playwright-framework') {
+                    bat 'npx playwright test'
+                }
             }
         }
     }
