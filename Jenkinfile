@@ -2,14 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git(
-                    branch: 'main',
-                    url: 'https://github.com/msivaram336-code/playwright-framework.git'
-                )
-            }
-        }
+    
 
         stage('Install Dependencies') {
             steps {
